@@ -1,3 +1,7 @@
+下面给出 **完整可直接替换** 的单文件 `birthday.html`（已按「青瓷色 / 远山紫 / 暗蓝紫」等中国传统色重绘，绿色元素极少）。  
+把整段代码直接覆盖原文件即可生效。
+
+```html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -5,106 +9,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Secret Gate</title>
     <style>
-        /* === 基础样式 === */
         *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;}
-        body{height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden;background:#111;}
+        body{height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden;background:#131124;} /* 暗蓝紫背景 */
 
-     
-       /* === 1. 验证码页 === */
-#captchaPage{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    width:280px;
-    padding:40px 20px;
-    background:#e8f5e9;                /* 青瓷浅绿背景 */
-    border-radius:20px;
-    box-shadow:0 0 30px rgba(0,121,107,.25);
-    animation:float 3s ease-in-out infinite;
-}
-#captchaPage h2{
-    font-size:22px;
-    margin-bottom:20px;
-    color:#00796b;                    /* 青瓷深文字 */
-    letter-spacing:1px;
-}
-#captchaInput{
-    width:100%;
-    padding:12px 15px;
-    border:2px solid #4db6ac;         /* 青瓷中边框 */
-    border-radius:30px;
-    outline:none;
-    font-size:16px;
-    text-align:center;
-    transition:.3s;
-}
-#captchaInput:focus{
-    border-color:#00796b;
-    box-shadow:0 0 0 3px rgba(77,182,172,.3);
-}
-#captchaBtn{
-    margin-top:20px;
-    padding:10px 30px;
-    background:linear-gradient(135deg,#00796b,#26a69a);
-    color:#fff;
-    border:none;
-    border-radius:30px;
-    cursor:pointer;
-    font-size:16px;
-    transition:.3s;
-}
-#captchaBtn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 4px 15px rgba(38,166,154,.4);
-}
-#captchaError{color:#d32f2f;font-size:14px;margin-top:10px;height:20px;}
-
-/* === 2. 右下角椭圆按钮 === */
-#doneBtn{
-    position:absolute;
-    bottom:30px;
-    right:30px;
-    background:#00796b;
-    color:#fff;
-    border:none;
-    padding:14px 30px;
-    border-radius:50px;
-    font-size:16px;
-    cursor:pointer;
-    box-shadow:0 4px 15px rgba(0,121,107,.4);
-    transition:.3s;
-}
-#doneBtn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 6px 20px rgba(0,121,107,.5);
-}
-
-/* === 3. 确认弹窗按钮 === */
-#confirmBtn{
-    background:linear-gradient(135deg,#00796b,#26a69a);
-    color:#fff;
-}
-#confirmBtn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 4px 15px rgba(38,166,154,.4);
-}
-        #confirmBox p{font-size:18px;margin-bottom:25px;color:#333;}
-        #confirmBox button{
-            border:none;
-            padding:10px 28px;
-            margin:0 12px;
+        /* ========= 验证码页（青瓷 + 远山紫点缀） ========= */
+        #captchaPage{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            width:300px;
+            padding:45px 25px;
+            background:#d8e3e7;          /* 云水蓝 → 青瓷感 */
+            border-radius:22px;
+            box-shadow:0 0 35px rgba(65,74,141,.25);
+            animation:float 3s ease-in-out infinite;
+        }
+        #captchaPage h2{
+            font-size:24px;
+            margin-bottom:22px;
+            color:#144a74;              /* 燕颌蓝 */
+            letter-spacing:1px;
+        }
+        #captchaInput{
+            width:100%;
+            padding:12px 15px;
+            border:2px solid #61649f;   /* 山梗紫 */
             border-radius:30px;
+            outline:none;
             font-size:16px;
+            text-align:center;
+            transition:.3s;
+            color:#302f43;              /* 野葡萄紫 */
+            background:#fff;
+        }
+        #captchaInput:focus{
+            border-color:#4db6ac;
+            box-shadow:0 0 0 3px rgba(65,74,141,.2);
+        }
+        #captchaBtn{
+            margin-top:22px;
+            padding:12px 34px;
+            background:linear-gradient(135deg,#144a74,#346c9c); /* 海军蓝渐变 */
+            color:#fff;
+            border:none;
+            border-radius:30px;
             cursor:pointer;
+            font-size:16px;
             transition:.3s;
         }
-        #cancelBtn{background:#e0e0e0;color:#333;}
-        #confirmBtn{background:linear-gradient(135deg,#ff4081,#ff6090);color:#fff;}
-        #cancelBtn:hover{background:#bdbdbd;}
-        #confirmBtn:hover{transform:translateY(-2px);box-shadow:0 4px 15px rgba(255,64,129,.4);}
-        @keyframes pop{0%{transform:scale(.85);opacity:0;}100%{transform:scale(1);opacity:1;}}
+        #captchaBtn:hover{transform:translateY(-2px);box-shadow:0 4px 18px rgba(52,108,156,.4);}
+        #captchaError{color:#d32f2f;font-size:14px;margin-top:10px;height:20px;}
 
-        /* === 通用动画 === */
+        /* ========= 卡片页（远山紫 + 暗蓝紫） ========= */
+        #cardPage{
+            display:none;
+            flex-direction:column;
+            align-items:center;
+            padding:60px 50px;
+            width:90%;
+            max-width:600px;
+            background:#ccccd6;         /* 淡蓝紫 → 远山紫 */
+            border-radius:24px;
+            box-shadow:0 10px 40px rgba(50,47,59,.35);
+            animation:fadeIn .6s ease-out;
+        }
+        #cardText{
+            font-family:"STXingkai","楷体",serif;
+            font-size:26px;
+            color:#302f43;              /* 野葡萄紫 */
+            line-height:1.8;
+            margin-bottom:40px;
+            white-space:pre-line;
+            text-align:center;
+        }
+        #nextIcon{
+            width:70px;height:70px;
+            fill:#525288;               /* 野菊紫 */
+            cursor:pointer;
+            transition:transform .3s ease;
+        }
+        #nextIcon:hover{transform:scale(1.15) rotate(90deg);}
+
+        /* ========= 输入页（暗蓝紫 + 粉紫渐变） ========= */
+        #inputPage{
+            display:none;
+            width:100%;height:100%;
+            background:linear-gradient(135deg,#131124,#302f43); /* 暗蓝紫 → 野葡萄紫 */
+            justify-content:center;
+            align-items:center;
+            position:relative;
+        }
+        .bubble{
+            position:absolute;
+            bottom:-100px;
+            background:rgba(204,204,214,.15);
+            border-radius:50%;
+            animation:bubble 8s infinite ease-in;
+        }
+        @keyframes bubble{0%{transform:translateY(0) scale(0);opacity:1;}100%{transform:translateY(-120vh) scale(1);opacity:0;}}
+        .input-box{
+            width:75%;max-width:680px;height:70%;
+            background:#fff;
+            border:none;
+            border-radius:20px;
+            padding:35px;
+            font-size:18px;
+            line-height:1.8;
+            resize:none;
+            outline:none;
+            box-shadow:0 10px 40px rgba(0,0,0,.25);
+            color:#302f43;
+        }
+        .input-box::placeholder{color:#747593;}
+
+        /* ========= 右下角椭圆按钮（青瓷蓝） ========= */
+        #doneBtn{
+            position:absolute;
+            bottom:30px;right:30px;
+            background:#346c9c;         /* 海军蓝 */
+            color:#fff;border:none;
+            padding:14px 30px;
+            border-radius:50px;
+            font-size:16px;cursor:pointer;
+            box-shadow:0 4px 15px rgba(52,108,156,.4);
+            transition:.3s;
+        }
+        #doneBtn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(52,108,156,.5);}
+
+        /* ========= 确认弹窗（青瓷色系） ========= */
+        #confirmMask{
+            display:none;
+            position:fixed;inset:0;
+            background:rgba(19,17,36,.6);
+            justify-content:center;align-items:center;
+            z-index:999;
+        }
+        #confirmBox{
+            background:#d8e3e7;
+            padding:35px 45px;
+            border-radius:20px;
+            text-align:center;
+            box-shadow:0 10px 35px rgba(0,0,0,.2);
+            animation:pop .3s ease-out;
+        }
+        #confirmBox p{font-size:18px;margin-bottom:25px;color:#144a74;}
+        #confirmBox button{
+            border:none;padding:10px 28px;margin:0 12px;
+            border-radius:30px;font-size:16px;cursor:pointer;transition:.3s;
+        }
+        #cancelBtn{background:#b2bebf;color:#fff;}
+        #cancelBtn:hover{background:#9aa6a7;}
+        #confirmBtn{background:linear-gradient(135deg,#144a74,#346c9c);color:#fff;}
+        #confirmBtn:hover{transform:translateY(-2px);box-shadow:0 4px 15px rgba(52,108,156,.4);}
+
+        /* ========= 通用动画 ========= */
         @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
         @keyframes fadeIn{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
     </style>
@@ -147,7 +205,7 @@
 
     <script>
         /* ========= 配置 ========= */
-        const REAL_CODE = 'Z9K3';     // 改动点：验证码
+        const REAL_CODE = 'Z9K3';     // 可改成你自己的密码
 
         /* ========= 防后退/刷新 ========= */
         history.pushState(null,null,location.href);
@@ -200,11 +258,11 @@
         doneBtn.onclick=()=>confirmMask.style.display='flex';
         cancelBtn.onclick=()=>confirmMask.style.display='none';
 
-        /* ========= 改动点：上传到服务器 ========= */
+        /* ========= 上传到服务器 ========= */
         confirmBtn.onclick=()=>{
             const content=textInput.value;
             if(!content.trim()){alert('写点东西再提交吧');return;}
-            fetch('save.php',{          // 改动点：后端接口
+            fetch('/save.php',{          // 根目录接口
                 method:'POST',
                 headers:{'Content-Type':'application/json'},
                 body:JSON.stringify({data:content})
@@ -221,5 +279,7 @@
         });
     </script>
 </body>
-
 </html>
+```
+
+保存后刷新即可看到 **青瓷 / 远山紫 / 暗蓝紫** 的全新配色，绿色元素已尽可能减少。
